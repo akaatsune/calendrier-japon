@@ -154,9 +154,9 @@
   .items{display:flex;flex-direction:column;gap:6px}
   .item{border-radius:8px;padding:6px 7px;display:flex;flex-direction:column;gap:4px;border-top:2px solid transparent}
   .item.drag-over{border-top:2px solid var(--ink)}
-  .drag-handle{cursor:grab;color:inherit;opacity:.45;font-size:13px;padding:0 2px;flex-shrink:0}
-  .drag-handle:hover{opacity:.9}
-  .drag-handle:active{cursor:grabbing}
+  .move-btns{display:flex;flex-direction:column;gap:1px;flex-shrink:0}
+  .move-btns button{border:none;background:transparent;color:inherit;opacity:.5;font-size:9px;cursor:pointer;padding:0;line-height:1}
+  .move-btns button:hover{opacity:1}
   .item.cat-transport{background:var(--transport-bg);color:var(--transport)}
   .item.cat-visite{background:var(--visite-bg);color:var(--visite)}
   .item.cat-musee{background:var(--musee-bg);color:var(--musee)}
@@ -194,21 +194,21 @@
   #suggList{display:flex;flex-direction:column;gap:8px;margin-top:14px}
   .sugg-card{background:var(--card);border:none;box-shadow:var(--shadow);border-radius:16px;padding:12px 14px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
   .sugg-main{flex:1;display:flex;flex-direction:column;gap:4px}
-  .sugg-name{font-weight:700;font-size:14px}
-  .sugg-place{font-size:12px;color:var(--ink-soft)}
-  .sugg-note{font-size:12px;color:var(--ink-soft);margin-top:2px}
+  .sugg-name{font-weight:700;font-size:16px}
+  .sugg-place{font-size:14px;color:var(--ink-soft)}
+  .sugg-note{font-size:14px;color:var(--ink-soft);margin-top:2px}
   .sugg-edit-btn,.sugg-done-btn{border:1px solid var(--line);background:var(--card);color:var(--ink-soft);width:26px;height:26px;border-radius:8px;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center}
   .sugg-done-btn{background:var(--visite-bg);color:var(--visite);border-color:transparent}
   .sugg-edit-btn:hover{background:var(--ink);color:#fff}
   .sugg-row{display:flex;align-items:center;gap:8px}
-  .sugg-edit-name{border:none;background:transparent;font-size:14px;font-weight:700;flex:1;min-width:0;padding:2px 0;font-family:inherit;color:var(--ink)}
+  .sugg-edit-name{border:none;background:transparent;font-size:16px;font-weight:700;flex:1;min-width:0;padding:2px 0;font-family:inherit;color:var(--ink)}
   .sugg-edit-name:focus{outline:none}
   .sugg-edit-cat{border:none;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;font-family:inherit;cursor:pointer;flex-shrink:0}
-  .sugg-edit-place,.sugg-edit-link{border:none;background:transparent;font-size:12px;color:var(--ink-soft);padding:1px 0;font-family:inherit;width:100%}
+  .sugg-edit-place,.sugg-edit-link{border:none;background:transparent;font-size:14px;color:var(--ink-soft);padding:1px 0;font-family:inherit;width:100%}
   .sugg-edit-place:focus,.sugg-edit-link:focus{outline:none}
   .sugg-edit-link{color:var(--navy);font-weight:600;flex:1;min-width:0}
   .sugg-open-link{border:none;background:transparent;cursor:pointer;font-size:13px;flex-shrink:0;padding:0 2px;display:inline-flex}
-  .sugg-edit-note{border:none;background:var(--bg);border-radius:8px;font-size:12px;color:var(--ink-soft);padding:6px 8px;width:100%;font-family:inherit;resize:vertical;min-height:32px;margin-top:2px}
+  .sugg-edit-note{border:none;background:var(--bg);border-radius:8px;font-size:14px;color:var(--ink-soft);padding:6px 8px;width:100%;font-family:inherit;resize:vertical;min-height:32px;margin-top:2px}
   .sugg-edit-note:focus{outline:none}
 
   /* Notes perso tab */
@@ -216,6 +216,16 @@
   .notes-grid{display:grid;grid-template-columns:1fr;gap:14px}
   .notes-block label{font-size:12px;font-weight:700;color:var(--ink-soft);display:block;margin-bottom:6px}
   .notes-block textarea{width:100%;min-height:90px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px;font-family:inherit;background:var(--card);resize:vertical}
+
+  /* Checklist tab */
+  .check-item{display:flex;align-items:center;gap:10px;background:var(--card);box-shadow:var(--shadow);border-radius:12px;padding:10px 14px;margin-bottom:8px}
+  .check-item input[type=checkbox]{width:20px;height:20px;flex-shrink:0;accent-color:var(--accent);cursor:pointer}
+  .check-item span{flex:1;font-size:15px}
+  .check-item.done span{text-decoration:line-through;color:var(--ink-soft)}
+  .check-item .del{border:none;background:transparent;cursor:pointer;font-size:14px;color:var(--ink-soft);opacity:.6}
+  .check-item .del:hover{opacity:1}
+  .whoami-preset{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 16px;font-size:14px;cursor:pointer;font-family:inherit}
+  .whoami-preset:hover{border-color:var(--navy)}
 
   footer{margin-top:24px;font-size:12px;color:var(--ink-soft);text-align:center}
 
@@ -247,6 +257,20 @@
   #pinInput:focus{outline:none;border-color:var(--navy)}
   #pinError{color:var(--accent);font-size:12px;font-weight:600;min-height:16px;margin-bottom:10px}
   #pinSubmit{width:100%;background:var(--sunrise-deep);color:#fff;border:none;border-radius:12px;padding:11px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
+  body.dark{
+    --ink:#F2ECDF; --ink-soft:#B3AA97; --bg:#15130F; --card:#211D17; --line:#3A342A;
+    --transport:#7FB2F5; --transport-bg:#16233D;
+    --visite:#7FD69C;    --visite-bg:#122A1B;
+    --musee:#B0A6F5;     --musee-bg:#211D3D;
+    --attraction:#F58FB4; --attraction-bg:#341823;
+    --confort:#6FE0D4;   --confort-bg:#0F2E2A;
+    --repas:#F5BA5C;     --repas-bg:#332210;
+    --festival:#D49CF5;  --festival-bg:#2B1A33;
+    --libre:#C6BEAB;     --libre-bg:#262319;
+  }
+  body.dark .lodging{background:var(--navy)}
+  body.dark #pinGate{background:var(--bg)}
+  #darkToggle{font-size:16px}
   #pinSubmit:hover{opacity:.9}
 
   @media print{
@@ -287,6 +311,7 @@
     <button class="tab-btn active" data-tab="calendar">Calendrier</button>
     <button class="tab-btn" data-tab="suggestions">Suggestions</button>
     <button class="tab-btn" data-tab="notes">Bloc-notes</button>
+    <button class="tab-btn" data-tab="checklist">Checklist</button>
   </div>
 
   <!-- CALENDAR TAB -->
@@ -294,9 +319,8 @@
     <div class="toolbar">
       <button class="btn" id="printBtn">Imprimer / PDF</button>
       <button class="btn" id="todayBtn">📍 Aujourd'hui</button>
-      <button class="btn" id="exportBtn">Exporter (.json)</button>
-      <button class="btn" id="importBtn">Importer</button>
-      <input type="file" id="importFile" accept="application/json" style="display:none">
+      <button class="btn" id="darkToggle" title="Mode sombre">🌙</button>
+      <button class="btn" id="icsBtn">📅 Exporter agenda</button>
       <button class="btn primary" id="shareBtn">Partager</button>
     </div>
     <div class="legend">
@@ -343,6 +367,29 @@
   <div id="tab-notes" class="tab-panel">
     <div class="notes-block">
       <textarea id="nBlocnote" placeholder="Note libre : vols, assurance, passeport, idées, tout ce que tu veux noter..." style="min-height:320px"></textarea>
+    </div>
+  </div>
+
+  <!-- CHECKLIST TAB -->
+  <div id="tab-checklist" class="tab-panel">
+    <div id="whoamiGate" style="display:none">
+      <p style="font-size:14px;color:var(--ink-soft);margin-bottom:10px">Qui es-tu ? Ta liste sera juste pour toi.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px" id="whoamiPresets"></div>
+      <div style="display:flex;gap:8px">
+        <input type="text" id="whoamiInput" placeholder="Ton prénom" style="border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:14px;font-family:inherit;flex:1">
+        <button class="btn primary" id="whoamiConfirm">C'est moi</button>
+      </div>
+    </div>
+    <div id="checklistApp" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <span style="font-size:14px;color:var(--ink-soft)">Liste de <strong id="whoamiName" style="color:var(--ink)"></strong></span>
+        <button class="btn" id="whoamiChange">Changer de personne</button>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:14px">
+        <input type="text" id="checklistInput" placeholder="Ajouter un article (ex: adaptateur prise)" style="border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:14px;font-family:inherit;flex:1">
+        <button class="btn primary" id="checklistAdd">Ajouter</button>
+      </div>
+      <div id="checklistList"></div>
     </div>
   </div>
 
@@ -413,7 +460,7 @@ let editingSuggestions = new Set();
 
 const defaultData = {
   title:"Japon en famille", start:"2026-08-07", end:"2026-09-27", photo:null,
-  days:{}, suggestions:[], sortByPlace:false, showHidden:false
+  days:{}, suggestions:[], sortByPlace:false, showHidden:false, checklists:{}
 };
 defaultData.days[0] = { title:"Arrivée à Tokyo", lodging:"Hôtel — Tokyo",
   items:[{time:"14:00", cat:"transport", transportIcon:"avion", text:"Vol d'arrivée + transfert hôtel", note:""}] };
@@ -429,8 +476,8 @@ function loadNotes(){
   return {note:""};
 }
 let data = load();
+if(!data.checklists) data.checklists = {};
 let notes = loadNotes();
-let dragSource = null;
 
 function save(){ localStorage.setItem(STORE_KEY, JSON.stringify(data)); hasUnsyncedChanges = true; scheduleSync(); }
 function saveNotes(){ localStorage.setItem(NOTES_KEY, JSON.stringify(notes)); }
@@ -637,7 +684,10 @@ function renderItem(day, idx, updateTotal, dayIndex){
   const meta = document.createElement('div');
   meta.className = 'item-meta';
   meta.innerHTML = `
-    <span class="drag-handle" draggable="true" title="Glisser pour réordonner">⠿</span>
+    <div class="move-btns">
+      <button class="move-up" title="Monter">▲</button>
+      <button class="move-down" title="Descendre">▼</button>
+    </div>
     <input type="time" class="time-start" data-key="time-${dayIndex}-${idx}" value="${it.time || ''}">
     ${it.cat==='transport' ? `<span style="opacity:.5;font-size:11px">→</span><input type="time" class="time-end" data-key="timeend-${dayIndex}-${idx}" value="${it.endTime || ''}">` : ''}
     <select class="cat-select">
@@ -657,25 +707,14 @@ function renderItem(day, idx, updateTotal, dayIndex){
   }
   meta.querySelector('.time-start').addEventListener('input', e=>{ it.time = e.target.value; save(); });
 
-  const handle = meta.querySelector('.drag-handle');
-  handle.addEventListener('dragstart', e=>{
-    dragSource = {day, idx};
-    e.dataTransfer.effectAllowed = 'move';
+  meta.querySelector('.move-up').addEventListener('click', ()=>{
+    if(idx === 0) return;
+    [day.items[idx-1], day.items[idx]] = [day.items[idx], day.items[idx-1]];
+    save(); render();
   });
-  wrap.addEventListener('dragover', e=>{
-    e.preventDefault();
-    wrap.classList.add('drag-over');
-  });
-  wrap.addEventListener('dragleave', ()=> wrap.classList.remove('drag-over'));
-  wrap.addEventListener('drop', e=>{
-    e.preventDefault();
-    wrap.classList.remove('drag-over');
-    if(!dragSource || dragSource.day !== day){ dragSource = null; return; }
-    const from = dragSource.idx;
-    dragSource = null;
-    if(from === idx) return;
-    const [moved] = day.items.splice(from,1);
-    day.items.splice(idx,0,moved);
+  meta.querySelector('.move-down').addEventListener('click', ()=>{
+    if(idx === day.items.length-1) return;
+    [day.items[idx+1], day.items[idx]] = [day.items[idx], day.items[idx+1]];
     save(); render();
   });
   meta.querySelector('.cat-select').addEventListener('change', e=>{
@@ -747,24 +786,70 @@ document.getElementById('photoFile').addEventListener('change', e=>{
 });
 
 document.getElementById('printBtn').addEventListener('click', ()=> window.print());
-document.getElementById('exportBtn').addEventListener('click', ()=>{
-  const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+const DARK_KEY = 'jp-family-dark';
+function applyDarkPref(){
+  const on = localStorage.getItem(DARK_KEY) === '1';
+  document.body.classList.toggle('dark', on);
+  document.getElementById('darkToggle').textContent = on ? '☀️' : '🌙';
+}
+document.getElementById('darkToggle').addEventListener('click', ()=>{
+  const on = !document.body.classList.contains('dark');
+  localStorage.setItem(DARK_KEY, on ? '1' : '0');
+  applyDarkPref();
+});
+
+function icsEscape(s){
+  return String(s||'').replace(/\\/g,'\\\\').replace(/,/g,'\\,').replace(/;/g,'\\;').replace(/\n/g,'\\n');
+}
+function pad(n){ return String(n).padStart(2,'0'); }
+document.getElementById('icsBtn').addEventListener('click', ()=>{
+  const n = Math.max(1, Math.min(90, daysBetween(data.start, data.end)));
+  let lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//calendrier-japon-famille//FR','CALSCALE:GREGORIAN'];
+  for(let i=0;i<n;i++){
+    const d = new Date(data.start);
+    d.setDate(d.getDate()+i);
+    const day = data.days[i];
+    if(!day || !day.items) continue;
+    day.items.forEach((it, idx)=>{
+      if(!it.text) return;
+      const y = d.getFullYear(), m = pad(d.getMonth()+1), dd = pad(d.getDate());
+      let dtstart, dtend;
+      if(it.time){
+        const [h,mi] = it.time.split(':');
+        dtstart = `${y}${m}${dd}T${pad(h)}${pad(mi)}00`;
+        if(it.endTime){
+          const [h2,mi2] = it.endTime.split(':');
+          dtend = `${y}${m}${dd}T${pad(h2)}${pad(mi2)}00`;
+        } else {
+          const endD = new Date(d); endD.setHours(Number(h), Number(mi)+60);
+          dtend = `${endD.getFullYear()}${pad(endD.getMonth()+1)}${pad(endD.getDate())}T${pad(endD.getHours())}${pad(endD.getMinutes())}00`;
+        }
+        lines.push('BEGIN:VEVENT');
+        lines.push('UID:' + i + '-' + idx + '-' + Date.now() + '@calendrier-japon-famille');
+        lines.push('DTSTAMP:' + y + m + dd + 'T000000');
+        lines.push('DTSTART:' + dtstart);
+        lines.push('DTEND:' + dtend);
+      } else {
+        lines.push('BEGIN:VEVENT');
+        lines.push('UID:' + i + '-' + idx + '-' + Date.now() + '@calendrier-japon-famille');
+        lines.push('DTSTAMP:' + y + m + dd + 'T000000');
+        lines.push('DTSTART;VALUE=DATE:' + y + m + dd);
+      }
+      lines.push('SUMMARY:' + icsEscape(it.text));
+      const desc = [day.lodging ? '🏠 ' + day.lodging : '', it.note || ''].filter(Boolean).join(' — ');
+      if(desc) lines.push('DESCRIPTION:' + icsEscape(desc));
+      lines.push('END:VEVENT');
+    });
+  }
+  lines.push('END:VCALENDAR');
+  const blob = new Blob([lines.join('\r\n')], {type:'text/calendar'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url; a.download = 'calendrier-japon-famille.json'; a.click();
+  a.href = url; a.download = 'japon-famille.ics'; a.click();
   URL.revokeObjectURL(url);
 });
-document.getElementById('importBtn').addEventListener('click', ()=> document.getElementById('importFile').click());
-document.getElementById('importFile').addEventListener('change', e=>{
-  const file = e.target.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = ev=>{
-    try{ data = JSON.parse(ev.target.result); save(); render(); renderSuggestions(); }
-    catch(err){ alert("Ce fichier n'est pas un export valide de ce calendrier."); }
-  };
-  reader.readAsText(file);
-});
+
+applyDarkPref();
 document.getElementById('shareBtn').addEventListener('click', ()=>{
   alert("Envoie l'URL en ligne (Netlify) à tes parents, ou ce fichier .html si tu préfères une copie locale. Le calendrier, les suggestions et la photo de couverture se synchronisent automatiquement entre tous les appareils ouverts sur l'URL en ligne. Le bloc-notes reste propre à chaque appareil.");
 });
@@ -904,6 +989,7 @@ document.getElementById('nBlocnote').addEventListener('input', e=>{ notes.note =
 
 render();
 renderSuggestions();
+renderChecklistTab();
 requestAnimationFrame(()=> setTimeout(scrollToToday, 50));
 
 let latestRemoteData = null;
@@ -916,11 +1002,109 @@ function tryApplyRemote(){
     return;
   }
   data = latestRemoteData;
+  if(!data.checklists) data.checklists = {};
   latestRemoteData = null;
   localStorage.setItem(STORE_KEY, JSON.stringify(data));
   render();
   renderSuggestions();
+  renderChecklistItems();
 }
+
+/* ---------- Checklist (per person) ---------- */
+const WHOAMI_KEY = 'jp-family-whoami';
+const WHOAMI_PRESETS = ['Aka', 'Maman', 'Papa'];
+
+function checklistKeyOf(name){
+  return name.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
+
+function renderChecklistTab(){
+  const who = localStorage.getItem(WHOAMI_KEY);
+  const gate = document.getElementById('whoamiGate');
+  const app = document.getElementById('checklistApp');
+  if(!who){
+    gate.style.display = 'block';
+    app.style.display = 'none';
+    const presets = document.getElementById('whoamiPresets');
+    presets.innerHTML = '';
+    WHOAMI_PRESETS.forEach(name=>{
+      const b = document.createElement('button');
+      b.className = 'whoami-preset';
+      b.textContent = name;
+      b.addEventListener('click', ()=> setWhoami(name));
+      presets.appendChild(b);
+    });
+    return;
+  }
+  gate.style.display = 'none';
+  app.style.display = 'block';
+  document.getElementById('whoamiName').textContent = who;
+  renderChecklistItems();
+}
+
+function setWhoami(name){
+  if(!name || !name.trim()) return;
+  localStorage.setItem(WHOAMI_KEY, name.trim());
+  renderChecklistTab();
+}
+
+document.getElementById('whoamiConfirm').addEventListener('click', ()=>{
+  setWhoami(document.getElementById('whoamiInput').value);
+});
+document.getElementById('whoamiInput').addEventListener('keydown', e=>{
+  if(e.key === 'Enter') setWhoami(e.target.value);
+});
+document.getElementById('whoamiChange').addEventListener('click', ()=>{
+  localStorage.removeItem(WHOAMI_KEY);
+  renderChecklistTab();
+});
+
+function renderChecklistItems(){
+  if(isTypingSomewhere()){ setTimeout(renderChecklistItems, 700); return; }
+  const who = localStorage.getItem(WHOAMI_KEY);
+  if(!who) return;
+  const key = checklistKeyOf(who);
+  if(!data.checklists[key]) data.checklists[key] = [];
+  const list = document.getElementById('checklistList');
+  list.innerHTML = '';
+  data.checklists[key].forEach(item=>{
+    const row = document.createElement('div');
+    row.className = 'check-item' + (item.checked ? ' done' : '');
+    row.innerHTML = `
+      <input type="checkbox" ${item.checked ? 'checked' : ''}>
+      <span>${escapeAttr(item.text)}</span>
+      <button class="del" aria-label="supprimer">✕</button>
+    `;
+    row.querySelector('input').addEventListener('change', e=>{
+      item.checked = e.target.checked;
+      row.classList.toggle('done', item.checked);
+      save();
+    });
+    row.querySelector('.del').addEventListener('click', ()=>{
+      data.checklists[key] = data.checklists[key].filter(x=>x.id!==item.id);
+      save(); renderChecklistItems();
+    });
+    list.appendChild(row);
+  });
+}
+
+function addChecklistItem(){
+  const who = localStorage.getItem(WHOAMI_KEY);
+  if(!who) return;
+  const input = document.getElementById('checklistInput');
+  const text = input.value.trim();
+  if(!text) return;
+  const key = checklistKeyOf(who);
+  if(!data.checklists[key]) data.checklists[key] = [];
+  data.checklists[key].push({id: Date.now()+Math.random(), text, checked:false});
+  save(); renderChecklistItems();
+  input.value = '';
+}
+document.getElementById('checklistAdd').addEventListener('click', addChecklistItem);
+document.getElementById('checklistInput').addEventListener('keydown', e=>{
+  if(e.key === 'Enter') addChecklistItem();
+});
+renderChecklistTab();
 
 onSnapshot(calendarDocRef, {includeMetadataChanges:true}, snap=>{
   if(snap.metadata.hasPendingWrites) return;
