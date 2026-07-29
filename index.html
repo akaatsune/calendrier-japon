@@ -224,8 +224,8 @@
   .check-item.done span{text-decoration:line-through;color:var(--ink-soft)}
   .check-item .del{border:none;background:transparent;cursor:pointer;font-size:14px;color:var(--ink-soft);opacity:.6}
   .check-item .del:hover{opacity:1}
-  .whoami-preset{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 16px;font-size:14px;cursor:pointer;font-family:inherit}
-  .whoami-preset:hover{border-color:var(--navy)}
+  .whoami-preset{border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 16px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .whoami-preset:hover{border-color:var(--navy);background:var(--navy);color:#fff}
 
   footer{margin-top:24px;font-size:12px;color:var(--ink-soft);text-align:center}
 
@@ -332,15 +332,17 @@
     <button class="tab-btn" data-tab="checklist">Checklist</button>
   </div>
 
+  <div style="display:flex;gap:8px;margin-bottom:18px">
+    <button class="btn" id="darkToggle" title="Mode sombre" style="border:1px dashed var(--line)"></button>
+    <button class="btn" id="contrastToggle" title="Augmenter les contrastes" style="border:1px dashed var(--line)">🔆 Contraste</button>
+  </div>
+
   <!-- CALENDAR TAB -->
   <div id="tab-calendar" class="tab-panel active">
     <div class="toolbar">
       <button class="btn" id="printBtn">Imprimer / PDF</button>
       <button class="btn" id="todayBtn">📍 Aujourd'hui</button>
       <button class="btn" id="icsBtn">📅 Exporter agenda</button>
-      <span style="flex:1"></span>
-      <button class="btn" id="darkToggle" title="Mode sombre" style="border:1px dashed var(--line)"></button>
-      <button class="btn" id="contrastToggle" title="Augmenter les contrastes" style="border:1px dashed var(--line)">🔆 Contraste</button>
       <button class="btn primary" id="shareBtn">Partager</button>
     </div>
     <div class="legend">
