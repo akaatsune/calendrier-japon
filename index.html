@@ -790,7 +790,7 @@ const DARK_KEY = 'jp-family-dark';
 function applyDarkPref(){
   const on = localStorage.getItem(DARK_KEY) === '1';
   document.body.classList.toggle('dark', on);
-  document.getElementById('darkToggle').textContent = on ? '☀️' : '🌙';
+  document.getElementById('darkToggle').textContent = (on ? '☀️' : '🌙') + ' Mode sombre';
 }
 document.getElementById('darkToggle').addEventListener('click', ()=>{
   const on = !document.body.classList.contains('dark');
@@ -989,7 +989,6 @@ document.getElementById('nBlocnote').addEventListener('input', e=>{ notes.note =
 
 render();
 renderSuggestions();
-renderChecklistTab();
 requestAnimationFrame(()=> setTimeout(scrollToToday, 50));
 
 let latestRemoteData = null;
