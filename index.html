@@ -80,10 +80,10 @@
   }
   #photoBtn:hover{background:rgba(255,255,255,.25)}
 
-  .tabs{display:flex;gap:4px;background:var(--line);padding:4px;border-radius:12px;width:fit-content;margin-bottom:18px}
+  .tabs{display:flex;gap:4px;background:var(--line);padding:4px;border-radius:12px;width:fit-content;max-width:100%;margin-bottom:18px;overflow-x:auto;-webkit-overflow-scrolling:touch}
   .tab-btn{
     border:none;background:transparent;color:var(--ink-soft);font-weight:600;font-size:13px;
-    padding:8px 16px;border-radius:9px;cursor:pointer;font-family:inherit;
+    padding:8px 16px;border-radius:9px;cursor:pointer;font-family:inherit;flex-shrink:0;white-space:nowrap;
   }
   .tab-btn.active{background:#fff;color:var(--navy)}
   .tab-panel{display:none}
@@ -238,6 +238,7 @@
     #photoBtn{top:12px;right:12px;padding:6px 11px;font-size:11px}
     .dates input{font-size:12px;padding:5px 7px;flex:1 1 130px}
     .sugg-form{grid-template-columns:1fr}
+    .tab-btn{padding:7px 11px;font-size:12px}
   }
   #pinGate{
     position:fixed;inset:0;z-index:1000;background:var(--bg);
@@ -319,8 +320,9 @@
     <div class="toolbar">
       <button class="btn" id="printBtn">Imprimer / PDF</button>
       <button class="btn" id="todayBtn">📍 Aujourd'hui</button>
-      <button class="btn" id="darkToggle" title="Mode sombre">🌙</button>
       <button class="btn" id="icsBtn">📅 Exporter agenda</button>
+      <span style="flex:1"></span>
+      <button class="btn" id="darkToggle" title="Mode sombre" style="border:1px dashed var(--line)"></button>
       <button class="btn primary" id="shareBtn">Partager</button>
     </div>
     <div class="legend">
@@ -1011,7 +1013,7 @@ function tryApplyRemote(){
 
 /* ---------- Checklist (per person) ---------- */
 const WHOAMI_KEY = 'jp-family-whoami';
-const WHOAMI_PRESETS = ['Aka', 'Maman', 'Papa'];
+const WHOAMI_PRESETS = ['Romane', 'Ève', 'Arnaud'];
 
 function checklistKeyOf(name){
   return name.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
