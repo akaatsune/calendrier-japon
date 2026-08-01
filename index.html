@@ -150,6 +150,8 @@
   .lodging input:focus{outline:none}
   .lodging input::placeholder{color:rgba(255,255,255,.6)}
   .lodging .badge{font-size:9px;font-weight:700;text-transform:uppercase;background:rgba(255,255,255,.25);color:#fff;padding:2px 6px;border-radius:8px;white-space:nowrap}
+  .maps-btn{border:none;background:rgba(255,255,255,.2);color:#fff;width:24px;height:24px;border-radius:50%;font-size:12px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+  .maps-btn:hover{background:rgba(255,255,255,.35)}
 
   .items{display:flex;flex-direction:column;gap:6px}
   .item{border-radius:8px;padding:6px 7px;display:flex;flex-direction:column;gap:4px;border-top:2px solid transparent}
@@ -182,6 +184,8 @@
   .item input:focus,.item select:focus{outline:none}
   .item .note-toggle,.item .del{border:none;background:transparent;cursor:pointer;font-size:12px;color:inherit;opacity:.55;padding:0 2px;flex-shrink:0}
   .item .note-toggle:hover,.item .del:hover{opacity:1}
+  .maps-btn-item{border:none;background:transparent;cursor:pointer;font-size:13px;color:inherit;opacity:.6;padding:0 2px;flex-shrink:0}
+  .maps-btn-item:hover{opacity:1}
   .note-box{border:none;background:var(--bg);border-radius:8px;font-size:13px;color:var(--ink-soft);padding:6px 8px;width:100%;font-family:inherit;resize:vertical;min-height:32px}
   .note-box:focus{outline:none}
   .add-item{border:1.5px dashed var(--line);background:transparent;color:var(--ink-soft);font-size:12px;border-radius:8px;padding:6px;cursor:pointer;font-family:inherit;font-weight:500}
@@ -638,6 +642,7 @@ function render(){
       <div class="lodging ${changed ? 'changed' : ''}">
         <span>🏠</span>
         <input class="lodging-input" data-key="lodging-${i}" placeholder="Logement du jour" value="${escapeAttr(day.lodging)}">
+        <button class="maps-btn" title="Ouvrir dans Maps">📍</button>
         ${changed ? '<span class="badge">nouveau</span>' : ''}
       </div>
       <div class="items"></div>
@@ -648,6 +653,10 @@ function render(){
     card.querySelector('.hide-btn').addEventListener('click', ()=>{ day.hidden = true; save(); render(); });
     card.querySelector('.day-title').addEventListener('input', e=>{ day.title = e.target.value; save(); });
     card.querySelector('.lodging-input').addEventListener('input', e=>{ day.lodging = e.target.value; save(); debouncedRender(); });
+    card.querySelector('.maps-btn').addEventListener('click', ()=>{
+      if(!day.lodging) return;
+      window.open('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(day.lodging), '_blank', 'noopener');
+    });
 
     const totalEl = card.querySelector('.day-total');
     function updateTotal(){
@@ -760,6 +769,7 @@ function renderItem(day, idx, updateTotal, dayIndex){
   body.innerHTML = `
     <textarea class="activity-text" data-key="text-${dayIndex}-${idx}" placeholder="Titre (ex: Train vers Kyoto)" rows="1">${escapeAttr(it.text)}</textarea>
     <div class="item-actions">
+      <button class="maps-btn-item" title="Ouvrir dans Maps">📍</button>
       <input type="text" class="price-input" data-key="price-${dayIndex}-${idx}" placeholder="¥" value="${escapeAttr(it.price||'')}">
       <button class="del" aria-label="supprimer">✕</button>
     </div>
@@ -770,6 +780,10 @@ function renderItem(day, idx, updateTotal, dayIndex){
   requestAnimationFrame(autoGrow);
   body.querySelector('.price-input').addEventListener('input', e=>{ it.price = e.target.value; save(); updateTotal(); });
   body.querySelector('.del').addEventListener('click', ()=>{ day.items.splice(idx,1); save(); render(); });
+  body.querySelector('.maps-btn-item').addEventListener('click', ()=>{
+    if(!it.text) return;
+    window.open('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(it.text), '_blank', 'noopener');
+  });
 
   const noteBox = document.createElement('textarea');
   noteBox.className = 'note-box';
